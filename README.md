@@ -93,3 +93,17 @@ Once the server is running, open your web browser and navigate to `http://localh
 
 ## Sample Data
 The scraped data has also been exported from the PostgreSQL database to a Google Sheets document for easy viewing and sharing. The document can be accessed from the following link: https://docs.google.com/spreadsheets/d/1MKGJ7aYGck800pRC4koHSYHRbaYFzXq7wZCr0Ln6mJk/edit?usp=sharing
+
+## Database Schema
+
+The database schema for this project is defined in the `schema.sql` file found in the project root directory. This file contains the SQL `CREATE TABLE` commands necessary to create the `product_data` table in a PostgreSQL database, which corresponds to the Django `Product` model. 
+
+The table structure is as follows:
+
+- `id`: A unique identifier for each product. It is of the type `SERIAL` and serves as the primary key of the table.
+- `name`: The name of the product, stored as a `VARCHAR(200)`.
+- `url`: The URL of the product on eBay, stored as a `TEXT`.
+- `price`: The price of the product, stored as a `VARCHAR(200)`.
+- `image_url`: The URL of the product's image on eBay, stored as a `TEXT`.
+
+You can run the `schema.sql` file in your PostgreSQL environment to set up the table. Make sure to replace the placeholder values in the `schema.sql` file with your actual database name and credentials.

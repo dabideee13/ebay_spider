@@ -1,4 +1,6 @@
 import scrapy
+from scrapy.spidermiddlewares.httperror import HttpError
+from twisted.internet.error import DNSLookupError, TCPTimedOutError
 from product_spider.scrapy_spiders.scrapy_spiders.items import ProductItem
 
 
@@ -11,7 +13,22 @@ class EbaySpider(scrapy.Spider):
 
         for url in self.urls:
             self.logger.debug('Crawling URL: %s', url)
-            yield scrapy.Request(url=url, callback=self.get_category_links)
+            yield scrapy.Request(url=url, callback=self.get_category_links, errback=self.handle_failure)
+
+    def handle_failure(self, failure):
+        self.logger.error(repr(failure))
+
+        if failure.check(HttpError):
+            response = failure.value.response
+            self.logger.error('HttpError occurred on %s', response.url)
+
+        elif failure.check(DNSLookupError):
+            request = failure.request
+            self.logger.error('DNSLookupError occurred on %s', request.url)
+
+        elif failure.check(TimeoutError, TCPTimedOutError):
+            request = failure.request
+            self.logger.error('TimeoutError occurred on %s', request.url)
 
     def get_category_links(self, response):
         self.logger.info('Getting category links from: %s', response.url)

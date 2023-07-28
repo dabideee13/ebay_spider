@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ebay-spider"
+version = "0.1.0"
+description = ""
+authors = ["Dave Emmanuel Magno <d.e.magno13@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ebay_spider"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.3"
+djangorestframework = "^3.14.0"
+psycopg2-binary = "^2.9.6"
+scrapy = "^2.9.0"
+scrapy-user-agents = "^0.1.1"
+scrapy-proxies = "^0.4"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -45,7 +45,7 @@ To start the spider, navigate to the project root and run the following command:
 ```
 python manage.py crawl
 ```
-This will start the eBay spider. The scraped data will be stored in the PostgreSQL database specified in your `.env` file. The scraped data can be accessed through the `/products` REST API endpoint. This endpoint supports pagination, use the `page` query parameter to navigate through the pages (e.g., `/products?page=2`).
+This will start the eBay spider. The scraped data will be stored in the PostgreSQL database specified in your `.env` file. The scraped data can be accessed through the `/api/products` REST API endpoint. This endpoint supports pagination, use the `page` query parameter to navigate through the pages (e.g., `/api/products?page=2`).
 
 ## Project Structure
 
@@ -80,3 +80,13 @@ This project uses a PostgreSQL database to store the scraped product data. You n
 ## Logging
 
 Logging in this project is set to the `INFO` level and it is configured in `settings.py`. Logs are printed to the console and are also saved to a log file located in the `logs` directory. A new log file is created for each run of the spider.
+
+## API Documentation
+
+This project includes an auto-generated API documentation which can be accessed by navigating to `/api/schema/docs` in your web browser when the server is running. The documentation provides a comprehensive guide on how to interact with the REST API, including the available endpoints, request methods, request parameters, and response formats.
+
+You can start the server by running the following command:
+```
+python manage.py runserver
+```
+Once the server is running, open your web browser and navigate to `http://localhost:8000/api/schema/docs` to access the API documentation. Please ensure that the server is running on port 8000, otherwise, replace `8000` in the URL with the port number your server is running on.

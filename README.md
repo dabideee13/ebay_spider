@@ -90,3 +90,6 @@ You can start the server by running the following command:
 python manage.py runserver
 ```
 Once the server is running, open your web browser and navigate to `http://localhost:8000/api/schema/docs` to access the API documentation. Please ensure that the server is running on port 8000, otherwise, replace `8000` in the URL with the port number your server is running on.
+
+## Sample Data
+The scraped data has also been exported from the PostgreSQL database to a Google Sheets document for easy viewing and sharing. The document can be accessed from the following link: https://docs.google.com/spreadsheets/d/1MKGJ7aYGck800pRC4koHSYHRbaYFzXq7wZCr0Ln6mJk/edit?usp=sharing
